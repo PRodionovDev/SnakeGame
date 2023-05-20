@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class SnakeMovement : MonoBehaviour
+{
+    public float Speed = 5;
+
+    public float RotationSpeed = 100;
+
+    public List<GameObject> tailObjects = new List<GameObject>();
+
+    public float z_offset = 3f;
+
+    public GameObject TailPrefab;
+
+    public Text ScoreText;
+
+    public int score = 0;
+
+    void Start()
+    {
+        tailObjects.Add(gameObject);
+    }
+
+    void Update()
+    {
+        ScoreText.text = score.ToString();
+        transform.Translate(Vector3.forward*Speed*Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.D)) {
+            transform.Rotate(Vector3.up*RotationSpeed*Time.deltaTime);
+        }
+        
+        if (Input.GetKey(KeyCode.A)) {
+            transform.Rotate(Vector3.up*-1*RotationSpeed*Time.deltaTime);
+        }
+    }
+
+    public void AddTail()
+    {
+        score = score + 1;
+        Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
+        newTailPos.z -= z_offset;
+
+        tailObjects.Add(GameObject.Instantiate(TailPrefab, newTailPos, Quaternion.identity) as GameObject);
+    }
+}
