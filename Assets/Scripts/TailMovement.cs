@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TailMovement : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class TailMovement : MonoBehaviour
     {
         if (other.CompareTag("SnakeHead")) {
             if (index > 2) {
-                Application.LoadLevel(Application.loadedLevel);
+                SceneManager.LoadScene("GameOver");
             }
         }
     }

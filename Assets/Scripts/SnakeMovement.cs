@@ -18,8 +18,6 @@ public class SnakeMovement : MonoBehaviour
 
     public Text ScoreText;
 
-    public int score = 0;
-
     void Start()
     {
         tailObjects.Add(gameObject);
@@ -27,7 +25,7 @@ public class SnakeMovement : MonoBehaviour
 
     void Update()
     {
-        ScoreText.text = score.ToString();
+        ScoreText.text = Score.score.ToString();
         transform.Translate(Vector3.forward*Speed*Time.deltaTime);
 
         if (Input.GetKey(KeyCode.D)) {
@@ -45,7 +43,7 @@ public class SnakeMovement : MonoBehaviour
 
     public void AddTail()
     {
-        score = score + 1;
+        Score.score = Score.score + 1;
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
         newTailPos.z -= z_offset;
 
