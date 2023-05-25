@@ -111,13 +111,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a28a26e7081c0b40bda3c365974482e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
+  Speed: 2
   RotationSpeed: 100
   tailObjects: []
   z_offset: 0.5
   TailPrefab: {fileID: 8734639044985369950, guid: ec44536c00ca5314a91f339c9ae80dbb, type: 3}
   ScoreText: {fileID: 0}
-  score: 0
 --- !u!1001 &8466018048800350454
 PrefabInstance:
   m_ObjectHideFlags: 0

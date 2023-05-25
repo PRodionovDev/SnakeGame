@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SnakeMovement : MonoBehaviour
 {
-    public float Speed = 5;
+    public float Speed = 2;
 
     public float RotationSpeed = 100;
 
@@ -44,6 +44,10 @@ public class SnakeMovement : MonoBehaviour
     public void AddTail()
     {
         Score.score = Score.score + 1;
+
+        if (tailObjects.Count % 5 == 0) {
+            Speed++;
+        }
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
         newTailPos.z -= z_offset;
 
