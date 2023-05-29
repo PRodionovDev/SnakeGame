@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     public void Start()
     {
         TotalScore = Score.score;
-        ScoreText.text = "Total score: " + TotalScore.ToString();
+        ScoreText.text = "Очков: " + TotalScore.ToString();
     }
 
     public void PlayPressed()

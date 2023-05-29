@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SnakeMovement : MonoBehaviour
 {
-    public float Speed = 2;
+    public float speed = 2;
 
     public float RotationSpeed = 100;
 
@@ -18,6 +18,8 @@ public class SnakeMovement : MonoBehaviour
 
     public Text ScoreText;
 
+    public Text SpeedText;
+
     void Start()
     {
         tailObjects.Add(gameObject);
@@ -26,7 +28,8 @@ public class SnakeMovement : MonoBehaviour
     void Update()
     {
         ScoreText.text = Score.score.ToString();
-        transform.Translate(Vector3.forward*Speed*Time.deltaTime);
+        SpeedText.text = "Скорость: " + Speed.speed.ToString();
+        transform.Translate(Vector3.forward*speed*Time.deltaTime);
 
         if (Input.GetKey(KeyCode.D)) {
             transform.Rotate(Vector3.up*RotationSpeed*Time.deltaTime);
@@ -45,8 +48,9 @@ public class SnakeMovement : MonoBehaviour
     {
         Score.score = Score.score + 1;
 
-        if (tailObjects.Count % 5 == 0) {
-            Speed++;
+        if (tailObjects.Count % 5 == 0 && speed <= 6) {
+            speed++;
+            Speed.speed = Speed.speed + 1;
         }
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
         newTailPos.z -= z_offset;
