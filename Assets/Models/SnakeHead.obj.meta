@@ -1,18 +1,13 @@
 fileFormatVersion: 2
-guid: 669e7921526201842917bbc0c8a512c8
+guid: 706bbcde5ce333541a06f816db044627
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: 15786_NoveltyHead_Partial_RattlesnakeMat
-    second: {fileID: 2100000, guid: fc086a8b254a1194698d302dbb196c05, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
