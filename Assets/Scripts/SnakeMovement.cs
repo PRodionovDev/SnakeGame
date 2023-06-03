@@ -20,6 +20,8 @@ public class SnakeMovement : MonoBehaviour
 
     public Text SpeedText;
 
+    public Material material;
+
     void Start()
     {
         tailObjects.Add(gameObject);
@@ -55,6 +57,9 @@ public class SnakeMovement : MonoBehaviour
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
         newTailPos.z -= z_offset;
 
-        tailObjects.Add(GameObject.Instantiate(TailPrefab, newTailPos, Quaternion.identity) as GameObject);
+        GameObject tail = GameObject.Instantiate(TailPrefab, newTailPos, Quaternion.identity) as GameObject;
+        tail.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1);
+
+        tailObjects.Add(tail);
     }
 }
