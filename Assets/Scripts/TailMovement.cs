@@ -37,5 +37,8 @@ public class TailMovement : MonoBehaviour
                 SceneManager.LoadScene("GameOver");
             }
         }
+        if (other.CompareTag("BG")) {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

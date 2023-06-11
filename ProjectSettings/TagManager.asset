@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SnakeHead
   - Menu
+  - BG
   layers:
   - Default
   - TransparentFX

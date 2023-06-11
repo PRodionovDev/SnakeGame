@@ -18,6 +18,8 @@ public class GameOver : MonoBehaviour
     public void PlayPressed()
     {
         Score.score = 0;
+        Level.level = 1;
+        Speed.speed = 2;
         SceneManager.LoadScene("Play");
     }
 

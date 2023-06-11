@@ -20,6 +20,8 @@ public class SnakeMovement : MonoBehaviour
 
     public Text SpeedText;
 
+    public Text LevelText;
+
     public Material material;
 
     void Start()
@@ -31,6 +33,7 @@ public class SnakeMovement : MonoBehaviour
     {
         ScoreText.text = Score.score.ToString();
         SpeedText.text = "Скорость: " + Speed.speed.ToString();
+        LevelText.text = "Уровень: " + Level.level;
         transform.Translate(Vector3.forward*speed*Time.deltaTime);
 
         if (Input.GetKey(KeyCode.D)) {
@@ -42,6 +45,9 @@ public class SnakeMovement : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.Q)) {
+            Score.score = 0;
+            Level.level = 1;
+            Speed.speed = 2;
             SceneManager.LoadScene("Menu");
         }
     }
@@ -53,6 +59,10 @@ public class SnakeMovement : MonoBehaviour
         if (tailObjects.Count % 5 == 0 && speed <= 6) {
             speed++;
             Speed.speed = Speed.speed + 1;
+        }
+        if (Score.score % 10 == 0 && Level.level <= 3) {
+            Level.level++;
+            SceneManager.LoadScene("Level " + Level.level);
         }
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
         newTailPos.z -= z_offset;
