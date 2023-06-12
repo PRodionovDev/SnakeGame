@@ -15,4 +15,10 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void MenuPressed()
+    {
+        Score.score = 0;
+        SceneManager.LoadScene("Menu");
+    }
 }

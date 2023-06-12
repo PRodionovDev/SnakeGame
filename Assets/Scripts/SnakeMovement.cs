@@ -10,6 +10,10 @@ public class SnakeMovement : MonoBehaviour
 
     public float RotationSpeed = 100;
 
+    public FixedJoystick joystick;
+
+    private float moveInput;
+
     public List<GameObject> tailObjects = new List<GameObject>();
 
     public float z_offset = 3f;
@@ -24,6 +28,8 @@ public class SnakeMovement : MonoBehaviour
 
     public Material material;
 
+    [SerializeField] private Rigidbody rigidbody;
+
     void Start()
     {
         tailObjects.Add(gameObject);
@@ -36,12 +42,10 @@ public class SnakeMovement : MonoBehaviour
         LevelText.text = "Уровень: " + Level.level;
         transform.Translate(Vector3.forward*speed*Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.D)) {
-            transform.Rotate(Vector3.up*RotationSpeed*Time.deltaTime);
-        }
-        
-        if (Input.GetKey(KeyCode.A)) {
-            transform.Rotate(Vector3.up*-1*RotationSpeed*Time.deltaTime);
+        rigidbody.velocity = new Vector3(joystick.Horizontal*speed, rigidbody.velocity.y, joystick.Vertical*speed);
+
+        if (joystick.Horizontal != 0 || joystick.Vertical !=0) {
+            transform.rotation = Quaternion.LookRotation(rigidbody.velocity);
         }
 
         if (Input.GetKey(KeyCode.Q)) {
@@ -60,7 +64,7 @@ public class SnakeMovement : MonoBehaviour
             speed++;
             Speed.speed = Speed.speed + 1;
         }
-        if (Score.score % 10 == 0 && Level.level <= 3) {
+        if (Score.score % 2 == 0 && Level.level <= 3) {
             Level.level++;
             SceneManager.LoadScene("Level " + Level.level);
         }
