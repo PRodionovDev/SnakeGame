@@ -34,7 +34,11 @@ public class TailMovement : MonoBehaviour
     {
         if (other.CompareTag("SnakeHead")) {
             if (index > 2) {
-                SceneManager.LoadScene("GameOver");
+                if (Level.level == 1) {
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                } else {
+                    SceneManager.LoadScene("GameOver");
+                }
             }
         }
         if (other.CompareTag("BG")) {

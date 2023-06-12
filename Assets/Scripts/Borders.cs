@@ -8,7 +8,11 @@ public class Borders : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SnakeHead")) {
-            SceneManager.LoadScene("GameOver");
+            if (Level.level == 1) {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            } else {
+                SceneManager.LoadScene("GameOver");
+            }
         }
     }
 }
