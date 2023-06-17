@@ -1188,9 +1188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   RotationSpeed: 100
+  z_offset: 3
   joystick: {fileID: 518103261}
   tailObjects: []
-  z_offset: 3
   TailPrefab: {fileID: 8734639044985369950, guid: ec44536c00ca5314a91f339c9ae80dbb, type: 3}
   ScoreText: {fileID: 1440401588}
   SpeedText: {fileID: 2026032059}
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 1146650178}
   - component: {fileID: 1146650177}
   m_Layer: 0
-  m_Name: GameHelper
+  m_Name: FoodGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1629,8 +1629,8 @@ MonoBehaviour:
   Zsize: 13.03
   Xsize: 12.83
   foodPrefab: {fileID: 5806575277587470232, guid: 96bfc0e9585834c4291ecb40ce8f4528, type: 3}
-  curPos: {x: 0, y: 0, z: 0}
-  curFood: {fileID: 0}
+  currentPosition: {x: 0, y: 0, z: 0}
+  currentFood: {fileID: 0}
 --- !u!4 &1146650178
 Transform:
   m_ObjectHideFlags: 0
@@ -1761,52 +1761,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2456869145087630942, guid: 0604c9a0ca8ca4c4eaaca5109178e768, type: 3}
   m_PrefabInstance: {fileID: 2456869144304962823}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1366987614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366987609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a28a26e7081c0b40bda3c365974482e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  RotationSpeed: 0
-  joystick: {fileID: 518103261}
-  tailObjects: []
-  z_offset: 3
-  TailPrefab: {fileID: 0}
-  ScoreText: {fileID: 1440401588}
-  SpeedText: {fileID: 2026032059}
-  LevelText: {fileID: 226986468}
-  material: {fileID: 0}
-  rigidbody: {fileID: 1366987616}
---- !u!114 &1366987615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366987609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a28a26e7081c0b40bda3c365974482e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 2
-  RotationSpeed: 100
-  joystick: {fileID: 518103261}
-  tailObjects: []
-  z_offset: 3
-  TailPrefab: {fileID: 0}
-  ScoreText: {fileID: 1440401588}
-  SpeedText: {fileID: 2026032059}
-  LevelText: {fileID: 226986468}
-  material: {fileID: 0}
-  rigidbody: {fileID: 1366987616}
 --- !u!54 &1366987616
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1990,9 +1944,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '0
-
-'
+  m_Text: "\u041E\u0447\u043A\u0438: 0\n"
 --- !u!222 &1440401589
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2291,12 +2243,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2398959845057931106, guid: 0604c9a0ca8ca4c4eaaca5109178e768, type: 3}
+      propertyPath: speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2398959845057931106, guid: 0604c9a0ca8ca4c4eaaca5109178e768, type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 518103261}
     - target: {fileID: 2398959845057931106, guid: 0604c9a0ca8ca4c4eaaca5109178e768, type: 3}
       propertyPath: z_offset
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2398959845057931106, guid: 0604c9a0ca8ca4c4eaaca5109178e768, type: 3}
       propertyPath: LevelText
@@ -2377,9 +2333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8168819122718862585, guid: ab2c6714255fbd242ad1a1329601ec40, type: 3}
       propertyPath: m_Text
-      value: '0
-
-'
+      value: "\u041E\u0447\u043A\u0438: 0\n"
       objectReference: {fileID: 0}
     - target: {fileID: 8168819122718862585, guid: ab2c6714255fbd242ad1a1329601ec40, type: 3}
       propertyPath: m_Color.b

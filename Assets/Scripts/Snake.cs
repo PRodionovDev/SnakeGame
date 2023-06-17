@@ -6,16 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Snake : MonoBehaviour
 {
-    public float speed = 2;
-    public float RotationSpeed = 100;
+    public float speed = 5;
+    public float z_offset = 20f;
+    private float moveInput;
 
     public FixedJoystick joystick;
 
-    private float moveInput;
-
     public List<GameObject> tailObjects = new List<GameObject>();
-
-    public float z_offset = 3f;
 
     public GameObject TailPrefab;
 
@@ -95,7 +92,7 @@ public class Snake : MonoBehaviour
      */
     private void NextLevel()
     {
-        if (Counter.score % 2 == 0 && Counter.level <= 3) {
+        if (Counter.score % 10 == 0 && Counter.level <= 3) {
             Counter.level++;
             Scene.loadLevel(Counter.level);
         }

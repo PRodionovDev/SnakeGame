@@ -27,7 +27,7 @@ public class Tail : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SnakeHead")) {
-            if (index > 2) {
+            if (index > 4) {
                 Scene.gameOver();
             }
         }
