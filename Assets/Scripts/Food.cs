@@ -17,9 +17,20 @@ public class Food : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SnakeHead")) {
-            other.GetComponent<SnakeMovement>().AddTail();
-            AudioSource.PlayOneShot(AudioClip);
-            Destroy(gameObject);
+            Eat(other);
         }
+    }
+
+    /**
+     * Съесть еду:
+     * добавляется элемент "хвоста"
+     * воспроизводится звук "Съедения"
+     * удаляется элемент "еды"
+     */
+    void Eat(Collider other)
+    {
+        other.GetComponent<Snake>().AddTail();
+        AudioSource.PlayOneShot(AudioClip);
+        Destroy(gameObject);
     }
 }

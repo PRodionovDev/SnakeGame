@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/**
+ * Камера
+ */
 public class FirstCamera : MonoBehaviour
 {
     public GameObject snake;

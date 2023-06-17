@@ -4,10 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SnakeMovement : MonoBehaviour
+public class Snake : MonoBehaviour
 {
     public float speed = 2;
-
     public float RotationSpeed = 100;
 
     public FixedJoystick joystick;
@@ -21,9 +20,7 @@ public class SnakeMovement : MonoBehaviour
     public GameObject TailPrefab;
 
     public Text ScoreText;
-
     public Text SpeedText;
-
     public Text LevelText;
 
     public Material material;
@@ -37,37 +34,78 @@ public class SnakeMovement : MonoBehaviour
 
     void Update()
     {
-        ScoreText.text = Score.score.ToString();
-        SpeedText.text = "Скорость: " + Speed.speed.ToString();
-        LevelText.text = "Уровень: " + Level.level;
-        transform.Translate(Vector3.forward*speed*Time.deltaTime);
-
+        SetText();
+        Move();
         rigidbody.velocity = new Vector3(joystick.Horizontal*speed, rigidbody.velocity.y, joystick.Vertical*speed);
 
         if (joystick.Horizontal != 0 || joystick.Vertical !=0) {
             transform.rotation = Quaternion.LookRotation(rigidbody.velocity);
         }
+    }
 
-        if (Input.GetKey(KeyCode.Q)) {
-            Score.score = 0;
-            Level.level = 1;
-            Speed.speed = 2;
-            SceneManager.LoadScene("Menu");
+    /**
+     * Рендер текста на экране
+     */
+    private void SetText()
+    {
+        ScoreText.text = "Очки: " + Counter.score;
+        SpeedText.text = "Скорость: " + speed;
+        LevelText.text = "Уровень: " + Counter.level;
+    }
+
+    /**
+     * Движение змеи
+     */
+    private void Move()
+    {
+        transform.Translate(Vector3.forward*speed*Time.deltaTime);
+    }
+
+    /**
+     * Добавление элемента в змейку
+     */
+    public void AddTail()
+    {
+        UpScore();
+        UpSpeed();
+        NextLevel();
+        InitTail();
+    }
+
+    /**
+     * Рендер текста на экране
+     */
+    private void UpScore()
+    {
+        Counter.score++;
+    }
+
+    /**
+     * Увеличение скорости
+     */
+    private void UpSpeed()
+    {
+        if (tailObjects.Count % 5 == 0 && speed <= 6) {
+            speed++;
         }
     }
 
-    public void AddTail()
+    /**
+     * Переход на следующий уровень
+     */
+    private void NextLevel()
     {
-        Score.score = Score.score + 1;
+        if (Counter.score % 2 == 0 && Counter.level <= 3) {
+            Counter.level++;
+            Scene.loadLevel(Counter.level);
+        }
+    }
 
-        if (tailObjects.Count % 5 == 0 && speed <= 6) {
-            speed++;
-            Speed.speed = Speed.speed + 1;
-        }
-        if (Score.score % 2 == 0 && Level.level <= 3) {
-            Level.level++;
-            SceneManager.LoadScene("Level " + Level.level);
-        }
+    /**
+     * Инициализация хвоста
+     */
+    private void InitTail()
+    {
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
         newTailPos.z -= z_offset;
 
