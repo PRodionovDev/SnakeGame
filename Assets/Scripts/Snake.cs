@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class Snake : MonoBehaviour
 {
     public float speed = 5;
-    public float z_offset = 20f;
     private float moveInput;
 
     public FixedJoystick joystick;
 
     public List<GameObject> tailObjects = new List<GameObject>();
+    public List<Vector3> positions = new List<Vector3>();
 
     public GameObject TailPrefab;
 
@@ -20,25 +20,40 @@ public class Snake : MonoBehaviour
     public Text SpeedText;
     public Text LevelText;
 
-    public Material material;
-
-    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private Rigidbody rigidbodyComp;
 
     void Start()
     {
         tailObjects.Add(gameObject);
+        AddTail();
     }
 
     void Update()
     {
         SetText();
         Move();
-        rigidbody.velocity = new Vector3(joystick.Horizontal*speed, rigidbody.velocity.y, joystick.Vertical*speed);
+        rigidbodyComp.velocity = new Vector3(joystick.Horizontal*speed, rigidbodyComp.velocity.y, joystick.Vertical*speed);
 
         if (joystick.Horizontal != 0 || joystick.Vertical !=0) {
-            transform.rotation = Quaternion.LookRotation(rigidbody.velocity);
+            transform.rotation = Quaternion.LookRotation(rigidbodyComp.velocity);
+        }
+
+        positions.Insert(0, transform.position);
+        int offset = 90;
+
+        int index = 0;
+
+        if (tailObjects.Count == 1) {
+            offset += offset;
+        }
+
+        foreach (var tail in tailObjects) {
+            Vector3 point = positions[Mathf.Min(index * offset, positions.Count - 1)];
+            tail.transform.position = point;
+            index++;
         }
     }
+
 
     /**
      * Рендер текста на экране
@@ -104,10 +119,8 @@ public class Snake : MonoBehaviour
     private void InitTail()
     {
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
-        newTailPos.z -= z_offset;
 
         GameObject tail = GameObject.Instantiate(TailPrefab, newTailPos, Quaternion.identity) as GameObject;
-        tail.GetComponent<Renderer>().material.color = new Color(Random.value, Random.value, Random.value, 1);
 
         tailObjects.Add(tail);
     }

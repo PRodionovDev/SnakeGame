@@ -286,7 +286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bbc5d1a0f18256544b7c01a84a02dc32, type: 2}
+  - {fileID: 2100000, guid: 62d1c56820a6b9c4386f240095bb6818, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -617,11 +617,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 758980739dadaaf459189d0aa46792a2, type: 3}
+    m_FontSize: 10
+    m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -697,7 +697,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 758980739dadaaf459189d0aa46792a2, type: 3}
     m_FontSize: 27
     m_FontStyle: 1
     m_BestFit: 0
@@ -1297,15 +1297,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  z_offset: 3
   joystick: {fileID: 518103261}
   tailObjects: []
+  positions: []
   TailPrefab: {fileID: 8734639044985369950, guid: ec44536c00ca5314a91f339c9ae80dbb, type: 3}
   ScoreText: {fileID: 1440401588}
   SpeedText: {fileID: 2026032059}
   LevelText: {fileID: 226986468}
-  material: {fileID: 0}
-  rigidbody: {fileID: 1366987616}
+  rigidbodyComp: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,7 +2040,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 758980739dadaaf459189d0aa46792a2, type: 3}
     m_FontSize: 27
     m_FontStyle: 1
     m_BestFit: 0
@@ -2053,7 +2052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "0\u041E\u0447\u043A\u0438: 0"
+  m_Text: "\u041E\u0447\u043A\u0438: 0"
 --- !u!222 &1440401589
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2323,7 +2322,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 758980739dadaaf459189d0aa46792a2, type: 3}
     m_FontSize: 27
     m_FontStyle: 1
     m_BestFit: 0
@@ -2438,7 +2437,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8168819122718862585, guid: ab2c6714255fbd242ad1a1329601ec40, type: 3}
       propertyPath: m_Text
-      value: "0\u041E\u0447\u043A\u0438: 0"
+      value: "\u041E\u0447\u043A\u0438: 0"
       objectReference: {fileID: 0}
     - target: {fileID: 8168819122718862585, guid: ab2c6714255fbd242ad1a1329601ec40, type: 3}
       propertyPath: m_Color.b
