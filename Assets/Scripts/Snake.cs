@@ -22,6 +22,11 @@ public class Snake : MonoBehaviour
 
     [SerializeField] private Rigidbody rigidbodyComp;
 
+    public const int MAX_SPEED = 7;
+    public const int MAX_LEVEL = 4;
+    public const int MAX_SCORE_TO_NEXT_LEVEL = 10;
+    public const int MAX_TAIL_TO_SPEED_UP = 5;
+
     void Start()
     {
         tailObjects.Add(gameObject);
@@ -82,7 +87,7 @@ public class Snake : MonoBehaviour
      */
     private void UpSpeed()
     {
-        if (tailObjects.Count % 5 == 0 && speed <= 6) {
+        if (tailObjects.Count % Snake.MAX_TAIL_TO_SPEED_UP == 0 && speed < Snake.MAX_SPEED) {
             speed++;
         }
     }
@@ -92,7 +97,7 @@ public class Snake : MonoBehaviour
      */
     private void NextLevel()
     {
-        if (Counter.score % 10 == 0 && Counter.level <= 3) {
+        if (Counter.score % Snake.MAX_SCORE_TO_NEXT_LEVEL == 0 && Counter.level < Snake.MAX_LEVEL) {
             Counter.level++;
             Scene.loadLevel(Counter.level);
         }
