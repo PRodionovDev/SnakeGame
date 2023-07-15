@@ -1981,6 +1981,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1366987623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366987609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a28a26e7081c0b40bda3c365974482e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  joystick: {fileID: 518103261}
+  tailObjects: []
+  positions: []
+  TailPrefab: {fileID: 8734639044985369950, guid: ec44536c00ca5314a91f339c9ae80dbb, type: 3}
+  ScoreText: {fileID: 1440401588}
+  SpeedText: {fileID: 2026032059}
+  LevelText: {fileID: 226986468}
+  rigidbodyComp: {fileID: 1366987616}
 --- !u!1 &1440401586
 GameObject:
   m_ObjectHideFlags: 0

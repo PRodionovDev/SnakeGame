@@ -14,7 +14,7 @@ public class Tail : MonoBehaviour
     void Start()
     {
         snake = GameObject.FindGameObjectWithTag("SnakeHead").GetComponent<Snake>();
-        tailTargetObj = snake.tailObjects[snake.tailObjects.Count - 2];
+        tailTargetObj = snake.tailObjects[snake.tailObjects.Count - 1];
         index = snake.tailObjects.IndexOf(gameObject);
     }
 
