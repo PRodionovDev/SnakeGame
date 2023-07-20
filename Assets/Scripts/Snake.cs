@@ -8,6 +8,7 @@ public class Snake : MonoBehaviour
 {
     public float speed = 5;
     private float moveInput;
+    private float offset = 4f;
 
     public FixedJoystick joystick;
 
@@ -109,6 +110,7 @@ public class Snake : MonoBehaviour
     private void InitTail()
     {
         Vector3 newTailPos = tailObjects[tailObjects.Count - 1].transform.position;
+        newTailPos.z -= offset;
 
         GameObject tail = GameObject.Instantiate(TailPrefab, newTailPos, Quaternion.identity) as GameObject;
 

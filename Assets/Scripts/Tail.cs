@@ -36,6 +36,9 @@ public class Tail : MonoBehaviour
     private void Move()
     {
         transform.LookAt(tailTarget);
+        /**
+         *@ todo баг в скорости (спаунится правильно, но сразу догоняет target)
+         */
         transform.position = Vector3.Lerp(transform.position, tailTarget, Time.deltaTime*snake.speed);
     }
 }
