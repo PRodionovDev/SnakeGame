@@ -36,6 +36,6 @@ public class Tail : MonoBehaviour
     private void Move()
     {
         transform.LookAt(tailTarget);
-        transform.position = Vector3.Lerp(transform.position, tailTarget, Time.deltaTime*snake.speed*0.15f);
+        transform.position = Vector3.Lerp(transform.position, tailTarget, Time.deltaTime*snake.speed*0.2f);
     }
 }
