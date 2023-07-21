@@ -27,7 +27,7 @@ public class Tail : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SnakeHead")) {
-            if (index > 4) {
+            if (index > 1) {
                 Scene.gameOver();
             }
         }
@@ -36,9 +36,6 @@ public class Tail : MonoBehaviour
     private void Move()
     {
         transform.LookAt(tailTarget);
-        /**
-         *@ todo баг в скорости (спаунится правильно, но сразу догоняет target)
-         */
-        transform.position = Vector3.Lerp(transform.position, tailTarget, Time.deltaTime*snake.speed);
+        transform.position = Vector3.Lerp(transform.position, tailTarget, Time.deltaTime*snake.speed*0.15f);
     }
 }
